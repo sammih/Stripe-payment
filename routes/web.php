@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\PaymentController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +14,5 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('home');
-});
+Route::get('/', [PaymentController::class, 'create'])->name('payment.create'); // create stripe payment
+Route::post('payments', [PaymentController::class, 'store'])->name('payment.store'); // store stripe payment
